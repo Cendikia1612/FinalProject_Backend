@@ -40,36 +40,57 @@ module.exports = {
 
   async create(req, res) {
     try {
-      const { name, price, categoryId, description} = req.body;
-      const userTokenId = req.user.id;
-      const image = [];
-      const fileBase64 = [];
-      const file = [];
+  //     const { name, price, categoryId, description} = req.body;
+  //     const userTokenId = req.user.id;
+  //     const image = [];
+  //     const fileBase64 = [];
+  //     const file = [];
 
-      for (var i = 0; i < req.files.length; i++) {
-        fileBase64.push(req.files[i].buffer.toString("base64"));
-        file.push(`data:${req.files[i].mimetype};base64,${fileBase64[i]}`);
-        const result = await cloudinaryUpload(file[i]);
-        image.push(result.secure_url);
-      }
-      // //kalo image kosong masukin placholder
-      // if (image.length === 0) {
-      //   image.push("https://pricesm.com/uploads/placeholder.png");
-      // }
-      const productCreated = await productService.create({
+  //     for (var i = 0; i < req.files.length; i++) {
+  //       fileBase64.push(req.files[i].buffer.toString("base64"));
+  //       file.push(`data:${req.files[i].mimetype};base64,${fileBase64[i]}`);
+  //       const result = await cloudinaryUpload(file[i]);
+  //       image.push(result.secure_url);
+  //     }
+  //     // image kosong placholder
+  //     // if (image.length === 0) {
+  //     //   image.push("https://pricesm.com/uploads/placeholder.png");
+  //     // }
+  //     const productCreated = await productService.create({
+  //       userId: userTokenId,
+  //       name,
+  //       price,
+  //       categoryId,
+  //       description,
+  //       image
+  //     });
+  //     const data = await productService.getCreateData(productCreated.id);
+  //     res.status(200).json({
+  //       status: true,
+  //       message: "Product has been created!",
+  //       data: data,
+  //     }); 
+  //   } catch (err) {
+  //     res.status(422).json({
+  //       status: false,
+  //       message: err.message,
+  //     });
+  //   }
+  // },
+      const userTokenId = req.user.id;
+      const data = await productService.create({
         userId: userTokenId,
-        name,
-        price,
-        categoryId,
-        description,
-        image,
+        categoryId: req.body.categoryId,
+        name: req.body.name,
+        price: req.body.price,
+        description: req.body.description,
+        image: req.body.image,
       });
-      const data = await productService.getCreateData(productCreated.id);
-      res.status(200).json({
+      res.status(201).json({
         status: true,
-        message: "Product added",
+        message: "Product has been created!",
         data: data,
-      }); 
+      });
     } catch (err) {
       res.status(422).json({
         status: false,
@@ -77,14 +98,18 @@ module.exports = {
       });
     }
   },
-  //     const userTokenId = req.user.id;
+  // async create(req, res) {
+  //   try {
+  //     // create product
   //     const data = await productService.create({
-  //       //userId: userTokenId,
+  //       // userId: req.body.userId,
   //       categoryId: req.body.categoryId,
   //       name: req.body.name,
   //       price: req.body.price,
   //       description: req.body.description,
   //       image: req.body.image,
+  //       createdAt: new Date(),
+  //       updatedAt: new Date(),
   //     });
   //     res.status(201).json({
   //       status: true,
@@ -98,7 +123,6 @@ module.exports = {
   //     });
   //   }
   // },
-
   async show(req, res) {
     try {
       const data = await productService.get(req.params.id);
@@ -154,7 +178,6 @@ module.exports = {
       const fileBase64 = [];
       const file = [];
       const newImage = [];
-      // console.log("old image : ", oldImage.length);
       let updateArgs = {
         ...req.body,
       };
@@ -170,7 +193,6 @@ module.exports = {
             cloudinaryDestroy(oldImage[x]);
           }
         } else {
-          // Kalo bentuknya string cuma 1 image
           cloudinaryDestroy(oldImage);
         }
       }
@@ -230,6 +252,22 @@ module.exports = {
   //     });
   //   }
   // },
+//   await productService.update(req.params.id, req.body);
+
+//   const data = await productService.get(req.params.id);
+
+//   res.status(200).json({
+//     status: true,
+//     message: "Product has been updated!",
+//     data: data,
+//   });
+// } catch (err) {
+//   res.status(422).json({
+//     status: false,
+//     message: err.message,
+//   });
+// }
+// },
 
   async destroy(req, res) {
     try {
