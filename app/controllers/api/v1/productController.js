@@ -40,57 +40,36 @@ module.exports = {
 
   async create(req, res) {
     try {
-  //     const { name, price, categoryId, description} = req.body;
-  //     const userTokenId = req.user.id;
-  //     const image = [];
-  //     const fileBase64 = [];
-  //     const file = [];
-
-  //     for (var i = 0; i < req.files.length; i++) {
-  //       fileBase64.push(req.files[i].buffer.toString("base64"));
-  //       file.push(`data:${req.files[i].mimetype};base64,${fileBase64[i]}`);
-  //       const result = await cloudinaryUpload(file[i]);
-  //       image.push(result.secure_url);
-  //     }
-  //     // image kosong placholder
-  //     // if (image.length === 0) {
-  //     //   image.push("https://pricesm.com/uploads/placeholder.png");
-  //     // }
-  //     const productCreated = await productService.create({
-  //       userId: userTokenId,
-  //       name,
-  //       price,
-  //       categoryId,
-  //       description,
-  //       image
-  //     });
-  //     const data = await productService.getCreateData(productCreated.id);
-  //     res.status(200).json({
-  //       status: true,
-  //       message: "Product has been created!",
-  //       data: data,
-  //     }); 
-  //   } catch (err) {
-  //     res.status(422).json({
-  //       status: false,
-  //       message: err.message,
-  //     });
-  //   }
-  // },
+      const { name, price, categoryId, description} = req.body;
       const userTokenId = req.user.id;
-      const data = await productService.create({
+      const image = [];
+      const fileBase64 = [];
+      const file = [];
+
+      for (var i = 0; i < req.files.length; i++) {
+        fileBase64.push(req.files[i].buffer.toString("base64"));
+        file.push(`data:${req.files[i].mimetype};base64,${fileBase64[i]}`);
+        const result = await cloudinaryUpload(file[i]);
+        image.push(result.secure_url);
+      }
+      // image kosong placholder
+      // if (image.length === 0) {
+      //   image.push("https://pricesm.com/uploads/placeholder.png");
+      // }
+      const productCreated = await productService.create({
         userId: userTokenId,
-        categoryId: req.body.categoryId,
-        name: req.body.name,
-        price: req.body.price,
-        description: req.body.description,
-        image: req.body.image,
+        name,
+        price,
+        categoryId,
+        description,
+        image
       });
-      res.status(201).json({
+      const data = await productService.getCreateData(productCreated.id);
+      res.status(200).json({
         status: true,
         message: "Product has been created!",
         data: data,
-      });
+      }); 
     } catch (err) {
       res.status(422).json({
         status: false,
@@ -98,6 +77,27 @@ module.exports = {
       });
     }
   },
+  //     const userTokenId = req.user.id;
+  //     const data = await productService.create({
+  //       userId: userTokenId,
+  //       categoryId: req.body.categoryId,
+  //       name: req.body.name,
+  //       price: req.body.price,
+  //       description: req.body.description,
+  //       image: req.body.image,
+  //     });
+  //     res.status(201).json({
+  //       status: true,
+  //       message: "Product has been created!",
+  //       data: data,
+  //     });
+  //   } catch (err) {
+  //     res.status(422).json({
+  //       status: false,
+  //       message: err.message,
+  //     });
+  //   }
+  // },
   // async create(req, res) {
   //   try {
   //     // create product
