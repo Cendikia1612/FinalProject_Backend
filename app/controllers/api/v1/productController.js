@@ -42,15 +42,15 @@ module.exports = {
     try {
       const { name, price, categoryId, description} = req.body;
       const userTokenId = req.user.id;
-      const image = [];
-      const fileBase64 = [];
-      const file = [];
-
-      for (var i = 0; i < req.files.length; i++) {
-        fileBase64.push(req.files[i].buffer.toString("base64"));
-        file.push(`data:${req.files[i].mimetype};base64,${fileBase64[i]}`);
-        const result = await cloudinaryUpload(file[i]);
-        image.push(result.secure_url);
+      let image ;
+      let fileBase64 ;
+      let file ;
+      console.log(req.files);
+      for (let i = 0; i < req.files.length; i++) {
+        fileBase64 = req.files[i].buffer.toString("base64");
+        file = `data:${req.files[i].mimetype};base64,${fileBase64}`;
+        let result = await cloudinaryUpload(file);
+        image = result.secure_url;
       }
       // image kosong placholder
       // if (image.length === 0) {
