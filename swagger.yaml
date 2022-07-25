@@ -1,0 +1,750 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: Project fix
+  contact: {}
+host: localhost:2000
+basePath: /api/v1
+securityDefinitions: {}
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /register:
+    post:
+      summary: Register
+      tags:
+        - user
+      operationId: Register
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/RegisterRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /login:
+    post:
+      summary: Login
+      tags:
+        - user
+      operationId: Login
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/LoginRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /profile:
+    get:
+      summary: Read profile
+      tags:
+        - user
+      operationId: Readprofile
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: Update profile
+      tags:
+        - user
+      operationId: Updateprofile
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: city
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: address
+          in: formData
+          required: true
+          type: string
+          description: ''
+        - name: phone
+          in: formData
+          required: true
+          type: integer
+          format: int64
+          description: ''
+        - name: image
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /category:
+    get:
+      summary: Get All category
+      tags:
+        - Category
+      operationId: GetAllcategory
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    post:
+      summary: Create category
+      tags:
+        - Category
+      operationId: Createcategory
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreatecategoryRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /category/1:
+    get:
+      summary: Get category ById
+      tags:
+        - Category
+      operationId: GetcategoryById
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: Update category ById
+      tags:
+        - Category
+      operationId: UpdatecategoryById
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/UpdatecategoryByIdRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    delete:
+      summary: Delete category ById
+      tags:
+        - Category
+      operationId: DeletecategoryById
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/DeletecategoryByIdRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /wishlist:
+    get:
+      summary: Get All wishlist
+      tags:
+        - Wishlist
+      operationId: GetAllwishlist
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    post:
+      summary: Create wishlist
+      tags:
+        - Wishlist
+      operationId: Createwishlist
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreatewishlistRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    delete:
+      summary: Delete wishlist ById
+      tags:
+        - Wishlist
+      operationId: DeletewishlistById
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /wishlist/seller:
+    get:
+      summary: Get Seller wishlist
+      tags:
+        - Wishlist
+      operationId: GetSellerwishlist
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /wishlist/buyer:
+    get:
+      summary: Get Buyer wishlist
+      tags:
+        - Wishlist
+      operationId: GetBuyerwishlist
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /product:
+    post:
+      summary: Create produk Seller
+      tags:
+        - Product
+      operationId: CreateprodukSeller
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateprodukSellerRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: Update produk
+      tags:
+        - Product
+      operationId: Updateproduk
+      deprecated: false
+      produces:
+        - application/json
+      consumes:
+        - application/x-www-form-urlencoded
+      parameters:
+        - name: image
+          in: formData
+          required: true
+          type: string
+          description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    get:
+      summary: Get All produk
+      tags:
+        - Product
+      operationId: GetAllproduk
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /product/1:
+    delete:
+      summary: Delete produk ById
+      tags:
+        - Product
+      operationId: DeleteprodukById
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    get:
+      summary: Get produk ById
+      tags:
+        - Product
+      operationId: GetprodukById
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /product/seller:
+    get:
+      summary: Get produk Seller
+      tags:
+        - Product
+      operationId: GetprodukSeller
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /product/seller/1:
+    get:
+      summary: Get  produk Seller ById
+      tags:
+        - Product
+      operationId: GetprodukSellerById
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction:
+    get:
+      summary: Get All transactions
+      tags:
+        - Transactions
+      operationId: GetAlltransactions
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    post:
+      summary: Create Transaction Buyer
+      tags:
+        - Transactions
+      operationId: CreateTransactionBuyer
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            $ref: '#/definitions/CreateTransactionBuyerRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction/buyer/1:
+    get:
+      summary: Get Transactions By Buyer Id
+      tags:
+        - Transactions
+      operationId: GetTransactionsByBuyerId
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction/seller/1:
+    get:
+      summary: Get Transactions By Seller Id
+      tags:
+        - Transactions
+      operationId: GetTransactionsBySellerId
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction/seller:
+    get:
+      summary: Get Detail Transactions By Seller
+      tags:
+        - Transactions
+      operationId: GetDetailTransactionsBySeller
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction/1:
+    put:
+      summary: Update Transactions By Seller
+      tags:
+        - Transactions
+      operationId: UpdateTransactionsBySeller
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Body
+          in: body
+          required: true
+          description: ''
+          schema:
+            example: {}
+            type: object
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /transaction/buyer:
+    get:
+      summary: Get Detail Transactions By Buyer
+      tags:
+        - Transactions
+      operationId: GetDetailTransactionsByBuyer
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /notification:
+    get:
+      summary: Get All Notification
+      tags:
+        - Notifikasi
+      operationId: GetAllNotification
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /notification/buyer:
+    get:
+      summary: Get notification By Buyer
+      tags:
+        - Notifikasi
+      operationId: GetnotificationByBuyer
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: update notification buyer
+      tags:
+        - Notifikasi
+      operationId: updatenotificationbuyer
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /notification/seller:
+    get:
+      summary: Get notification By Seller
+      tags:
+        - Notifikasi
+      operationId: GetnotificationBySeller
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    put:
+      summary: update notification seller
+      tags:
+        - Notifikasi
+      operationId: updatenotificationseller
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /notification/seller/1:
+    put:
+      summary: update notification seller by id
+      tags:
+        - Notifikasi
+      operationId: updatenotificationsellerbyid
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /notification/buyer/1:
+    put:
+      summary: update notification buyer by id
+      tags:
+        - Notifikasi
+      operationId: updatenotificationbuyerbyid
+      deprecated: false
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+definitions:
+  RegisterRequest:
+    title: RegisterRequest
+    example:
+      role: BUYER
+      name: BUYER B
+      email: buyer2@gmail.com
+      password: buyer2
+    type: object
+    properties:
+      role:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - role
+      - name
+      - email
+      - password
+  LoginRequest:
+    title: LoginRequest
+    example:
+      email: buyer2@gmail.com
+      password: buyer2
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+      - email
+      - password
+  UpdatecategoryByIdRequest:
+    title: UpdatecategoryByIdRequest
+    example:
+      name: Kendaraan
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  DeletecategoryByIdRequest:
+    title: DeletecategoryByIdRequest
+    example:
+      name: Kendaraan
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  CreatecategoryRequest:
+    title: CreatecategoryRequest
+    example:
+      name: Kesehatan
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  CreatewishlistRequest:
+    title: CreatewishlistRequest
+    example:
+      productId: '2'
+      userId: '5'
+    type: object
+    properties:
+      productId:
+        type: string
+      userId:
+        type: string
+    required:
+      - productId
+      - userId
+  CreateprodukSellerRequest:
+    title: CreateprodukSellerRequest
+    example:
+      userId: '1'
+      categoryId: '5'
+      name: Wajan
+      price: '100000'
+      description: Bahan yang sangat berkualitas
+      image: wajan.jpg
+    type: object
+    properties:
+      userId:
+        type: string
+      categoryId:
+        type: string
+      name:
+        type: string
+      price:
+        type: string
+      description:
+        type: string
+      image:
+        type: string
+    required:
+      - userId
+      - categoryId
+      - name
+      - price
+      - description
+      - image
+  CreateTransactionBuyerRequest:
+    title: CreateTransactionBuyerRequest
+    example:
+      productId: '2'
+      userId: '6'
+      bidprice: '50000'
+    type: object
+    properties:
+      productId:
+        type: string
+      userId:
+        type: string
+      bidprice:
+        type: string
+    required:
+      - productId
+      - userId
+      - bidprice
+security: []
+tags:
+  - name: user
+  - name: Category
+  - name: Wishlist
+  - name: Product
+  - name: Transactions
+  - name: Notifikasi
